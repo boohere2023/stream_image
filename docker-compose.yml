@@ -13,39 +13,16 @@ services:
       - "${REDIS_PORT}:6379"
       - "${MYSQL_PORT}:3306
     volumes:
-      - aapanel_data:/www
       - aapanel_vhost:/www/server/panel/vhost
       - aapanel_mysql:/www/server/data
       - aapanel_wwwroot:/www/wwwroot
     environment:
       - TZ=Etc/UTC
     entrypoint: ["/entrypoint.sh"]
-    depends_on:
-      - rclone
     env_file:
       - ./.env
 
-  rclone:
-    image: rclone/rclone
-    command: mount upcloud:/bucket-name /mnt/upcloud --allow-other --vfs-cache-mode writes
-    volumes:
-      - rclone-config:/config/rclone
-    environment:
-      - RCLONE_CONFIG=/config/rclone/rclone.conf
-    devices:
-      - /dev/fuse:/dev/fuse
-    cap_add:
-      - SYS_ADMIN
-    security_opt:
-      - apparmor:unconfined
-
 volumes:
-  aapanel_data:
-    driver: local
-    driver_opts:
-      type: none
-      device: /mnt/upcloud/aapanel_data
-      o: bind
   aapanel_vhost:
     driver: local
     driver_opts:
@@ -63,10 +40,4 @@ volumes:
     driver_opts:
       type: none
       device: /mnt/upcloud/aapanel_wwwroot
-      o: bind
-  rclone-config:
-    driver: local
-    driver_opts:
-      type: none
-      device: /root/.config/rclone
       o: bind
