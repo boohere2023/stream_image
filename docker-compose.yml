@@ -22,6 +22,8 @@ services:
     entrypoint: ["/entrypoint.sh"]
     depends_on:
       - rclone
+    env_file:
+      - ./.env
 
   rclone:
     image: rclone/rclone
