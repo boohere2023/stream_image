@@ -23,24 +23,9 @@ services:
 
 volumes:
   aapanel_vhost:
-    driver: local
-    driver_opts:
-      type: none
-      device: /mnt/upcloud/aapanel_vhost
-      o: bind
   aapanel_mysql:
-    driver: local
-    driver_opts:
-      type: none
-      device: /mnt/upcloud/aapanel_mysql
-      o: bind
   aapanel_wwwroot:
-    driver: local
-    driver_opts:
-      type: none
-      device: /mnt/upcloud/aapanel_wwwroot
-      o: bind
-
+  
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
