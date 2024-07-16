@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   aapanel:
-    image: aapanel/aapanel
+    image: sclbo/stream_image:lib2
     container_name: aapanel
     restart: unless-stopped
     ports:
