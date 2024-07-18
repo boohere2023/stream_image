@@ -13,9 +13,10 @@ services:
       - "${REDIS_PORT}:6379"
       - "${MYSQL_PORT}:3306"
     volumes:
-      - aapanel_vhost:/www/server/panel/vhost
-      - aapanel_mysql:/www/server/data
-      - aapanel_wwwroot:/www/wwwroot
+      - ${WEBSITE_LOG}:/www/wwwlogs
+      - ${WEBSITE_VHOST}:/www/server/panel/vhost
+      - ${WEBSITE_MYSQL}:/www/server/data
+      - ${WEBSITE_DATA}:/www/wwwroot
     environment:
       - TZ=Etc/UTC
     env_file:
@@ -90,3 +91,9 @@ volumes:
       - /var/lib/docker/volumes:/var/lib/docker/volumes
     ports:
       - "9001:9001"
+
+volumes:
+  website_log:
+  website_vhost:
+  website_mysql:
+  website_data:
