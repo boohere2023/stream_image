@@ -21,12 +21,7 @@ services:
       - TZ=Etc/UTC
     env_file:
       - ./.env
-
-volumes:
-  aapanel_vhost:
-  aapanel_mysql:
-  aapanel_wwwroot:
-  
+ 
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
