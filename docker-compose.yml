@@ -18,7 +18,7 @@ services:
       - ${WEBSITE_CRON}:/www/server/cron
       - ${WEBSITE_DATA}:/www/wwwroot
     environment:
-      - TZ=Etc/UTC
+      - TZ=Asia/Singapore
     env_file:
       - ./.env
  
@@ -78,7 +78,6 @@ services:
       - aapanel
 
 volumes:
-  website_log:
   website_vhost:
   website_cron:
   website_data:
